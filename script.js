@@ -1,94 +1,134 @@
-// -----------------------------
+// ===============================
 // Interest Calculator
-// -----------------------------
+// ===============================
 
 function calculateInterest() {
 
     let amount = Number(document.getElementById("amount").value);
     let rate = Number(document.getElementById("rate").value);
-    let months = Number(document.getElementById("months").value);
-    let days = Number(document.getElementById("days").value);
+
+    let startDate = new Date(document.getElementById("startDate").value);
+    let endDate = new Date(document.getElementById("endDate").value);
 
     if (
         amount <= 0 ||
         rate <= 0 ||
-        (months < 0 && days < 0)
+        isNaN(startDate) ||
+        isNaN(endDate)
     ) {
-        alert("Please enter valid values.");
+        alert("Please fill all fields correctly.");
         return;
     }
 
-    // Convert days into month fraction
-    let totalMonths = months + (days / 30);
+    if (endDate <= startDate) {
+        alert("End Date should be greater than Start Date.");
+        return;
+    }
+
+    // Difference in Days
+
+    let difference = endDate - startDate;
+
+    let totalDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    // Convert Days into Months
+
+    let totalMonths = totalDays / 30;
 
     // Simple Interest
-    let interest = (amount * rate * totalMonths) / 100;
 
-    let total = amount + interest;
+    let interest =
+        (amount * rate * totalMonths) / 100;
+
+    let totalAmount =
+        amount + interest;
+
+    document.getElementById("days").innerHTML =
+        totalDays;
 
     document.getElementById("interest").innerHTML =
         interest.toFixed(2);
 
     document.getElementById("total").innerHTML =
-        total.toFixed(2);
+        totalAmount.toFixed(2);
 
 }
 
 
 
-// -----------------------------
-// Interest Percentage Finder
-// -----------------------------
+// ===============================
+// Interest Rate Finder
+// ===============================
 
-function findInterest() {
+function findRate() {
 
     let principal =
         Number(document.getElementById("principal").value);
 
-    let interestAmount =
+    let interest =
         Number(document.getElementById("interestAmount").value);
 
-    let months =
-        Number(document.getElementById("findMonths").value);
+    let startDate =
+        new Date(document.getElementById("startDate2").value);
 
-    let days =
-        Number(document.getElementById("findDays").value);
+    let endDate =
+        new Date(document.getElementById("endDate2").value);
 
     if (
         principal <= 0 ||
-        interestAmount <= 0 ||
-        (months < 0 && days < 0)
+        interest <= 0 ||
+        isNaN(startDate) ||
+        isNaN(endDate)
     ) {
 
-        alert("Please enter valid values.");
+        alert("Please fill all fields correctly.");
 
         return;
 
     }
 
-    let totalMonths = months + (days / 30);
+    if (endDate <= startDate) {
 
-    let percentage =
-        (interestAmount / principal / totalMonths) * 100;
+        alert("End Date should be greater than Start Date.");
+
+        return;
+
+    }
+
+    let difference =
+        endDate - startDate;
+
+    let totalDays =
+        Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    let totalMonths =
+        totalDays / 30;
+
+    let rate =
+        (interest / principal / totalMonths) * 100;
+
+    document.getElementById("days2").innerHTML =
+        totalDays;
 
     document.getElementById("percentage").innerHTML =
-        percentage.toFixed(2);
+        rate.toFixed(2);
 
 }
 
 
 
-// -----------------------------
-// Reset Interest Calculator
-// -----------------------------
+// ===============================
+// Reset Calculator
+// ===============================
 
 function resetCalculator() {
 
     document.getElementById("amount").value = "";
     document.getElementById("rate").value = "";
-    document.getElementById("months").value = "";
-    document.getElementById("days").value = "";
+    document.getElementById("startDate").value = "";
+    document.getElementById("endDate").value = "";
 
+    document.getElementById("days").innerHTML = "0";
     document.getElementById("interest").innerHTML = "0";
     document.getElementById("total").innerHTML = "0";
 
@@ -96,17 +136,18 @@ function resetCalculator() {
 
 
 
-// -----------------------------
-// Reset Percentage Finder
-// -----------------------------
+// ===============================
+// Reset Finder
+// ===============================
 
 function resetFinder() {
 
     document.getElementById("principal").value = "";
     document.getElementById("interestAmount").value = "";
-    document.getElementById("findMonths").value = "";
-    document.getElementById("findDays").value = "";
+    document.getElementById("startDate2").value = "";
+    document.getElementById("endDate2").value = "";
 
+    document.getElementById("days2").innerHTML = "0";
     document.getElementById("percentage").innerHTML = "0";
 
 }

@@ -3,123 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interest Calculator</title>
+    <title>Money Machine</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<!-- Background Symbols -->
-<div class="bg-symbol rupee1">₹</div>
-<div class="bg-symbol rupee2">₹</div>
-<div class="bg-symbol percent1">%</div>
-<div class="bg-symbol dollar">$</div>
-
 <div class="container">
 
-    <h1><i class="fa-solid fa-money-bill-wave"></i> Interest Calculator</h1>
+    <header>
 
-    <!-- Interest Calculator -->
+        <h1><i class="fa-solid fa-money-bill-wave"></i> Money Machine</h1>
 
-    <div class="card">
+        <p>Simple Interest Calculator For Everyone</p>
 
-        <h2>💰 Interest Calculation</h2>
+    </header>
 
-        <input type="number" id="amount" placeholder="Principal Amount (₹)">
 
-        <input type="number" id="rate" placeholder="Interest Rate (%)">
+    <div class="main-container">
 
-        <div class="time">
+        <!-- Calculator -->
 
-            <input type="number" id="months" placeholder="Months">
+        <div class="card">
 
-            <input type="number" id="days" placeholder="Days">
+            <h2>💰 Interest Calculator</h2>
+
+            <label>Principal Amount (₹)</label>
+
+            <input
+            type="number"
+            id="amount"
+            placeholder="Enter Amount">
+
+            <label>Interest Rate (%)</label>
+
+            <input
+            type="number"
+            id="rate"
+            placeholder="Enter Interest Rate">
+
+            <label>Start Date</label>
+
+            <input
+            type="date"
+            id="startDate">
+
+            <label>End Date</label>
+
+            <input
+            type="date"
+            id="endDate">
+
+            <button
+            onclick="calculateInterest()">
+
+            Calculate Interest
+
+            </button>
+
+            <button
+            class="reset"
+            onclick="resetCalculator()">
+
+            Reset
+
+            </button>
+
+            <div class="result">
+
+                <h3>Your Result</h3>
+
+                <p>Total Days :
+                    <span id="days">
+                        0
+                    </span>
+                </p>
+
+                <p>Interest :
+                    ₹
+                    <span id="interest">
+                        0
+                    </span>
+                </p>
+
+                <p>Total Amount :
+                    ₹
+                    <span id="total">
+                        0
+                    </span>
+                </p>
+
+            </div>
 
         </div>
 
-        <button onclick="calculateInterest()">
-            Calculate
-        </button>
 
-        <button class="reset" onclick="resetCalculator()">
+
+        <!-- Percentage Finder -->
+
+        <div class="card">
+
+            <h2>📊 Interest Rate Finder</h2>
+
+            <label>Principal Amount (₹)</label>
+
+            <input
+            type="number"
+            id="principal"
+            placeholder="Enter Amount">
+
+            <label>Interest Amount (₹)</label>
+
+            <input
+            type="number"
+            id="interestAmount"
+            placeholder="Enter Interest">
+
+            <label>Start Date</label>
+
+            <input
+            type="date"
+            id="startDate2">
+
+            <label>End Date</label>
+
+            <input
+            type="date"
+            id="endDate2">
+
+            <button
+            onclick="findRate()">
+
+            Find Interest %
+
+            </button>
+
+            <button
+            class="reset"
+            onclick="resetFinder()">
+
             Reset
-        </button>
 
-        <div class="result">
+            </button>
 
-            <p>Interest Amount</p>
+            <div class="result">
 
-            <h3>₹ <span id="interest">0</span></h3>
+                <h3>Result</h3>
 
-            <p>Total Amount</p>
+                <p>Total Days :
+                    <span id="days2">
+                        0
+                    </span>
+                </p>
 
-            <h3>₹ <span id="total">0</span></h3>
+                <p>Monthly Interest :
+
+                    <span id="percentage">
+                        0
+                    </span>
+
+                    %
+
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
 
+    <!-- Formula -->
 
-    <!-- Interest Percentage Finder -->
+    <div class="formula">
 
-    <div class="card">
+        <h2>Formula</h2>
 
-        <h2>📊 Interest % Finder</h2>
+        <p>
 
-        <input type="number" id="principal"
-        placeholder="Principal Amount (₹)">
+            <b>Interest</b>
 
-        <input type="number" id="interestAmount"
-        placeholder="Interest Amount (₹)">
+            =
 
-        <div class="time">
+            (Principal × Rate × Days)
 
-            <input type="number"
-            id="findMonths"
-            placeholder="Months">
+            /
 
-            <input type="number"
-            id="findDays"
-            placeholder="Days">
+            (100 × 30)
 
-        </div>
+        </p>
 
-        <button onclick="findInterest()">
+        <p>
 
-            Find Percentage
+            <b>Rate</b>
 
-        </button>
+            =
 
-        <button class="reset"
-        onclick="resetFinder()">
+            (Interest × 100 × 30)
 
-            Reset
+            /
 
-        </button>
+            (Principal × Days)
 
-        <div class="result">
-
-            <p>Monthly Interest Rate</p>
-
-            <h3>
-
-                <span id="percentage">
-
-                    0
-
-                </span> %
-
-            </h3>
-
-        </div>
+        </p>
 
     </div>
+
+
+    <footer>
+
+        <p>
+
+            © 2026 Money Machine
+
+        </p>
+
+    </footer>
 
 </div>
 
