@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Background Symbols -->
+<div class="bg-symbol rupee1">₹</div>
+<div class="bg-symbol rupee2">₹</div>
+<div class="bg-symbol percent1">%</div>
+<div class="bg-symbol dollar">$</div>
+
+<div class="container">
+
+    <h1><i class="fa-solid fa-money-bill-wave"></i> Interest Calculator</h1>
+
+    <!-- Interest Calculator -->
+
+    <div class="card">
+
+        <h2>💰 Interest Calculation</h2>
+
+        <input type="number" id="amount" placeholder="Principal Amount (₹)">
+
+        <input type="number" id="rate" placeholder="Interest Rate (%)">
+
+        <div class="time">
+
+            <input type="number" id="months" placeholder="Months">
+
+            <input type="number" id="days" placeholder="Days">
+
+        </div>
+
+        <button onclick="calculateInterest()">
+            Calculate
+        </button>
+
+        <button class="reset" onclick="resetCalculator()">
+            Reset
+        </button>
+
+        <div class="result">
+
+            <p>Interest Amount</p>
+
+            <h3>₹ <span id="interest">0</span></h3>
+
+            <p>Total Amount</p>
+
+            <h3>₹ <span id="total">0</span></h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Interest Percentage Finder -->
+
+    <div class="card">
+
+        <h2>📊 Interest % Finder</h2>
+
+        <input type="number" id="principal"
+        placeholder="Principal Amount (₹)">
+
+        <input type="number" id="interestAmount"
+        placeholder="Interest Amount (₹)">
+
+        <div class="time">
+
+            <input type="number"
+            id="findMonths"
+            placeholder="Months">
+
+            <input type="number"
+            id="findDays"
+            placeholder="Days">
+
+        </div>
+
+        <button onclick="findInterest()">
+
+            Find Percentage
+
+        </button>
+
+        <button class="reset"
+        onclick="resetFinder()">
+
+            Reset
+
+        </button>
+
+        <div class="result">
+
+            <p>Monthly Interest Rate</p>
+
+            <h3>
+
+                <span id="percentage">
+
+                    0
+
+                </span> %
+
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
